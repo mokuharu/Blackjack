@@ -91,11 +91,14 @@ class Deal{
             /* デッキから同じカードがひかれないようにするif文 */
             if (black1.yamafuda[i][j]==0){
                 i = new Random().nextInt(13);
-                j = new Random().nextInt(4);}
-            else{
+                j = new Random().nextInt(4);
+                pick = black1.yamafuda[i][j];
+            } else{
                 /* ジャック、クイーン、キングは10として扱うためのif文 */
-                if (black1.yamafuda[i][j]>10){pick=10;}
-                else{
+                if (black1.yamafuda[i][j]>10) {
+                    pick=10;
+                    black1.yamafuda[i][j]=0;
+                } else{
                     pick = black1.yamafuda[i][j];
                     black1.yamafuda[i][j]=0;        /*pickしたものについては0を代入*/
                 }
@@ -122,10 +125,12 @@ class Deal{
             if (black1.yamafuda[i][j] == 0) {
                 i = new Random().nextInt(12);
                 j = new Random().nextInt(3);
+                pick = black1.yamafuda[i][j];
             } else {
                 /* ジャック、クイーン、キングは10として扱うためのif文 */
                 if (black1.yamafuda[i][j] > 10) {
                     pick = 10;
+                    black1.yamafuda[i][j]=0;
                 } else {
                     pick = black1.yamafuda[i][j];
                     black1.yamafuda[i][j]=0;        /*pickしたものについては0を代入*/
@@ -165,9 +170,11 @@ class Player {
             if (black1.yamafuda[i][j] == 0) {        /* デッキから同じカードがひかれないようにするif文 */
                 i = new Random().nextInt(12);
                 j = new Random().nextInt(3);
+                pick = black1.yamafuda[i][j];
             } else {
                 if (black1.yamafuda[i][j] > 10) {        /* ジャック、クイーン、キングは10として扱うためのif文 */
                     pick = 10;
+                    black1.yamafuda[i][j]=0;
                 } else {
                     pick = black1.yamafuda[i][j];
                     black1.yamafuda[i][j]=0;        /*pickしたものについては0を代入*/
@@ -205,17 +212,19 @@ class Player {
                     } else {
                         if (flag == 1) {
                             int pick = 0;
-                            int i = /*new Random().nextInt(12);*/
+                            int i = new Random().nextInt(12);
                             System.out.println("iは"+i);
-                            int j = /*new Random().nextInt(3);*/
+                            int j = new Random().nextInt(3);
                             System.out.println("jは"+j);
                             /* デッキから同じカードがひかれないようにするif文 */
                             if (black1.yamafuda[i][j] == 0) {
                                 i = new Random().nextInt(12);
                                 j = new Random().nextInt(3);
+                                pick = black1.yamafuda[i][j];
                             } else {
                                 if (black1.yamafuda[i][j] > 10) {        /* ジャック、クイーン、キングは10として扱うためのif文 */
                                     pick = 10;
+                                    black1.yamafuda[i][j]=0;        /*pickしたものについては0を代入してあげる*/
                                 } else {
                                     /*何故か1以外でもエースとして扱われてしまう…*/
                                     if(black1.yamafuda[i][j]==1){
